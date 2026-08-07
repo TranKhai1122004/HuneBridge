@@ -1,0 +1,6 @@
+@HuneBridge_HostAddress = http://localhost:5299
+
+GET {{HuneBridge_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
