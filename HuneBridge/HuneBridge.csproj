@@ -11,4 +11,41 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="Native\HUNERF.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <TargetPath>HUNERF.DLL</TargetPath>
+    </Content>
+    <Content Include="Native\rtl60.bpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <TargetPath>rtl60.bpl</TargetPath>
+    </Content>
+    <Content Include="Native\vcl60.bpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <TargetPath>vcl60.bpl</TargetPath>
+    </Content>
+    <Content Include="Native\cc3260mt.dll" Condition="Exists('Native\cc3260mt.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <TargetPath>cc3260mt.dll</TargetPath>
+    </Content>
+  </ItemGroup>
+
+  <Target Name="CopyHuneNativeToOutput" AfterTargets="CopyFilesToOutputDirectory">
+    <ItemGroup>
+      <_HuneNative Include="Native\HUNERF.DLL;Native\rtl60.bpl;Native\vcl60.bpl;Native\cc3260mt.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_HuneNative)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="CopyHuneNativeToPublish" AfterTargets="Publish">
+    <ItemGroup>
+      <_HuneNativePublish Include="Native\HUNERF.DLL;Native\rtl60.bpl;Native\vcl60.bpl;Native\cc3260mt.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_HuneNativePublish)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true" />
+  </Target>
+
 </Project>

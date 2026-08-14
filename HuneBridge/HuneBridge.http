@@ -1,6 +1,9 @@
-@HuneBridge_HostAddress = http://localhost:5299
+@HuneBridge_HostAddress = http://localhost:5050
 
-GET {{HuneBridge_HostAddress}}/weatherforecast/
-Accept: application/json
+GET {{HuneBridge_HostAddress}}/api/hune
+
+###
+
+POST {{HuneBridge_HostAddress}}/api/hune/read-card?com=5
 
 ###

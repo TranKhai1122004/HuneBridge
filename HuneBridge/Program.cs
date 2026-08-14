@@ -1,8 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
+// Cố định port cho cả Dev (dotnet run) và Exe — không phụ thuộc launchSettings
+var urls = builder.Configuration["Urls"] ?? "http://localhost:5050";
+builder.WebHost.UseUrls(urls);
+
 builder.Services.AddControllers();
 
-// Bật CORS cho phép Web gọi sang cổng 5050
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>

@@ -25,10 +25,15 @@ E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\staticwebassets.bu
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\staticwebassets.development.json
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\staticwebassets.build.endpoints.json
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\swae.build.ex.cache
-E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\staticwebassets.upToDateCheck.txt
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\HuneBridge.csproj.Up2Date
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\HuneBridge.dll
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\refint\HuneBridge.dll
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\HuneBridge.pdb
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\HuneBridge.genruntimeconfig.cache
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\ref\HuneBridge.dll
+E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\HuneBridge.sourcelink.json
+E:\A_ONESWebBooking\HuneBridge\HuneBridge\obj\Release\net10.0\staticwebassets.upToDateCheck.txt
+E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Release\net10.0\HUNERF.DLL
+E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Release\net10.0\cc3260mt.dll
+E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Release\net10.0\rtl60.bpl
+E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Release\net10.0\vcl60.bpl
