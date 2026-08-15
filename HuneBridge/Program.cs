@@ -1,6 +1,17 @@
-var builder = WebApplication.CreateBuilder(args);
+var contentRoot = AppContext.BaseDirectory;
+Directory.SetCurrentDirectory(contentRoot);
 
-// Cố định port cho cả Dev (dotnet run) và Exe — không phụ thuộc launchSettings
+if (!HuneBridge.Autostart.TryBecomeSingleInstance())
+    return;
+
+HuneBridge.Autostart.Register();
+
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    ContentRootPath = contentRoot
+});
+
 var urls = builder.Configuration["Urls"] ?? "http://localhost:5050";
 builder.WebHost.UseUrls(urls);
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HuneBridge")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6cf62d7b5d759e2fd0af9ef65df7dfa955a0f54")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b3a184504d4db901f5d086298ce172ea7756053")]
 [assembly: System.Reflection.AssemblyProductAttribute("HuneBridge")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HuneBridge")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

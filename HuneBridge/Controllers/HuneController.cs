@@ -17,23 +17,18 @@ namespace HuneBridge.Controllers
         }
 
         [HttpPost("read-card")]
-        public IActionResult ReadCard(
-            [FromQuery] int? com,
-            [FromQuery] int? nBlock,
-            [FromQuery] int? encrypt,
-            [FromQuery] string? cardPass,
-            [FromQuery] string? systemCode)
+        public IActionResult ReadCard()
         {
             try
             {
-                var usedCom = com ?? _configuration.GetValue("Hune:Com", 5);
-                var usedBlock = nBlock ?? _configuration.GetValue("Hune:nBlock", 4);
-                var usedEncrypt = encrypt ?? _configuration.GetValue("Hune:Encrypt", 1);
-                var usedPass = cardPass ?? _configuration["Hune:CardPass"] ?? "82A094FFFFFF";
-                var usedCode = systemCode ?? _configuration["Hune:SystemCode"] ?? "68512554";
+                var com = _configuration.GetValue("Hune:Com", 5);
+                var nBlock = _configuration.GetValue("Hune:nBlock", 4);
+                var encrypt = _configuration.GetValue("Hune:Encrypt", 1);
+                var cardPass = _configuration["Hune:CardPass"] ?? "82A094FFFFFF";
+                var systemCode = _configuration["Hune:SystemCode"] ?? "68512554";
 
                 var cardSN = new StringBuilder(64);
-                int retSerial = HuneNative.ReadCardSN(usedCom, cardSN);
+                int retSerial = HuneNative.ReadCardSN(com, cardSN);
 
                 int cardNoOld = 0;
                 int cardType = 0;
@@ -42,11 +37,11 @@ namespace HuneBridge.Controllers
                 var code = new StringBuilder(64);
                 var address = new StringBuilder(64);
                 var datetime = new StringBuilder(64);
-                pass.Append(usedPass);
-                code.Append(usedCode);
+                pass.Append(cardPass);
+                code.Append(systemCode);
 
                 int retCardNo = HuneNative.ReadMessage(
-                    usedCom, usedBlock, usedEncrypt,
+                    com, nBlock, encrypt,
                     ref cardNoOld, ref cardType, ref level,
                     pass, code, address, datetime);
 
@@ -74,13 +69,25 @@ namespace HuneBridge.Controllers
         {
             try
             {
-                _logger.LogInformation("KeyCard CardNo={CardNo}, RoomPass={RoomPass}, Com={Com}", req.CardNo, req.RoomPass, req.Com);
+                var com = _configuration.GetValue("Hune:Com", 5);
+                var nBlock = _configuration.GetValue("Hune:nBlock", 4);
+                var encrypt = _configuration.GetValue("Hune:Encrypt", 1);
+                var cardPass = _configuration["Hune:CardPass"] ?? "82A094FFFFFF";
+                var systemCode = _configuration["Hune:SystemCode"] ?? "68512554";
+                var hotelCode = _configuration["Hune:HotelCode"] ?? "853192E6";
+                var timeMode = _configuration.GetValue("Hune:TimeMode", 0);
+                var v8 = _configuration.GetValue("Hune:V8", 255);
+                var v16 = _configuration.GetValue("Hune:V16", 255);
+                var v24 = _configuration.GetValue("Hune:V24", 255);
+                var validTimes = _configuration.GetValue("Hune:ValidTimes", 255);
+
+                _logger.LogInformation("KeyCard CardNo={CardNo}, RoomPass={RoomPass}, Com={Com}", req.CardNo, req.RoomPass, com);
 
                 int ret = HuneNative.KeyCard(
-                    req.Com, req.CardNo, req.NBlock, req.Encrypt, req.CardPass, req.SystemCode, req.HotelCode,
+                    com, req.CardNo, nBlock, encrypt, cardPass, systemCode, hotelCode,
                     req.RoomPass, req.Address, req.SdIn, req.StIn, req.SdOut, req.StOut,
-                    req.LevelPass, req.PassMode, req.AddressMode, req.AddressQty, req.TimeMode,
-                    req.V8, req.V16, req.V24, req.AlwaysOpen, req.OpenBolt, req.TerminateOld, req.ValidTimes);
+                    req.LevelPass, req.PassMode, req.AddressMode, req.AddressQty, timeMode,
+                    v8, v16, v24, req.AlwaysOpen, req.OpenBolt, req.TerminateOld, validTimes);
 
                 _logger.LogInformation("KeyCard ret={ret}", ret);
                 return Ok(new { ret });
@@ -100,8 +107,18 @@ namespace HuneBridge.Controllers
     }
 
     public record KeyCardRequest(
-        int CardNo, int NBlock, int Encrypt, string CardPass, string SystemCode, string HotelCode,
-        string RoomPass, string Address, string SdIn, string StIn, string SdOut, string StOut,
-        int LevelPass, int PassMode, int AddressMode, int AddressQty, int TimeMode,
-        int V8, int V16, int V24, int AlwaysOpen, int OpenBolt, int TerminateOld, int ValidTimes, int Com);
+        int CardNo,
+        string RoomPass,
+        string Address,
+        string SdIn,
+        string StIn,
+        string SdOut,
+        string StOut,
+        int LevelPass,
+        int PassMode,
+        int AddressMode,
+        int AddressQty,
+        int AlwaysOpen,
+        int OpenBolt,
+        int TerminateOld);
 }

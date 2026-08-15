@@ -36,3 +36,4 @@ E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Debug\net10.0\rtl60.bpl
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Debug\net10.0\vcl60.bpl
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Debug\net10.0\cc3260mt.dll
 E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Debug\net10.0\HUNERF.DLL
+E:\A_ONESWebBooking\HuneBridge\HuneBridge\bin\Debug\net10.0\dotnet-tools.json
