@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HuneBridge")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b3a184504d4db901f5d086298ce172ea7756053")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a297dd5e976d7b8f6569372a87a5814625f026d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("HuneBridge")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HuneBridge")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

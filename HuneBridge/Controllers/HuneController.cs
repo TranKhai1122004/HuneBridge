@@ -99,6 +99,12 @@ namespace HuneBridge.Controllers
             }
         }
 
+        [HttpGet("machine")]
+        public IActionResult Machine()
+        {
+            return Ok(new { computerName = Environment.MachineName });
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
